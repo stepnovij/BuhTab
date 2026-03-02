@@ -366,6 +366,43 @@
     .hint.ok{color: var(--good); font-weight:900}
     .hint.bad{color: #b91c1c; font-weight:900}
 
+    /* FAQ */
+    .faq{display:grid; gap:12px; margin-top:14px}
+    .faq-item{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background: var(--panel);
+      overflow:hidden;
+    }
+    .faq-q{
+      padding:16px 18px;
+      font-weight:900;
+      font-size:15.5px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      user-select:none;
+    }
+    .faq-q:after{
+      content:"＋";
+      font-size:18px;
+      color:var(--muted);
+      flex:0 0 auto;
+      transition: transform .2s ease;
+    }
+    .faq-item.open .faq-q:after{
+      content:"−";
+    }
+    .faq-a{
+      padding:0 18px 16px;
+      color:var(--muted);
+      font-size:15px;
+      display:none;
+    }
+    .faq-item.open .faq-a{display:block}
+
     .footer{
       margin-top:24px;
       padding:18px 0 30px;
@@ -445,6 +482,10 @@
           <p class="lead">
             Помогаем бухгалтерам избавиться от ручного ввода. Мы берём на себя распознавание документов и подготовку проводок — вам остаётся только проверить.
           </p>
+          <p class="lead" style="font-size:15.5px">
+            <b>Buhtab автоматизирует ввод первичных документов в учёт:</b> из сканов/фото/PDF делает <b>документ в 1С + проводки + аналитику</b> — бухгалтеру остаётся проверка.<br>
+            Не про хранение/подпись/обмен. Про то, чтобы первичка быстро и правильно попадала в 1С.
+          </p>
 
           <div class="cta-row">
             <a class="btn primary" href="#cta">Записаться на демо</a>
@@ -503,6 +544,21 @@
             <div class="flow-item">
               <div class="ic" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <circle cx="17" cy="6" r="2" stroke="currentColor" stroke-width="1.4"/>
+                  <circle cx="7" cy="12" r="2" stroke="currentColor" stroke-width="1.4"/>
+                  <circle cx="14" cy="18" r="2" stroke="currentColor" stroke-width="1.4"/>
+                </svg>
+              </div>
+              <div>
+                <b>Проставляем аналитику</b>
+                <span>Подсказываем статьи затрат/ЦФО/подразделение/проект/договор по правилам и вашим прошлым решениям.</span>
+              </div>
+            </div>
+
+            <div class="flow-item">
+              <div class="ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
                   <path d="M9 12l2 2 4-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" stroke="currentColor" stroke-width="1.6"/>
                 </svg>
@@ -534,6 +590,9 @@
             <p>
               Документы приходят в разном виде — сканы, фото, PDF, бумага. Бухгалтер вручную вбивает реквизиты, суммы, номенклатуру. Разносит выписки, сверяет НДС, ищет ошибки. Больше документов — больше людей, выше затраты, больше риск ошибок.
             </p>
+            <p style="margin-top:10px">
+              Часть первички приходит <b>неструктурированной</b>: разные шаблоны, качество, пометки и уточнения. Самое долгое — не просто «вбить», а <b>правильно разнести</b>: договор/статья/ЦФО/проект, сверить НДС и убрать ошибки.
+            </p>
             <div class="list">
               <div class="li"><span class="bullet"></span><span>Разный формат входящих</span></div>
               <div class="li"><span class="bullet"></span><span>Ручной ввод реквизитов и сумм</span></div>
@@ -546,6 +605,7 @@
             <h3>Как мы помогаем</h3>
             <p>
               Вы загружаете документы в систему — система распознаёт данные, определяет проводки и возвращает бухгалтеру готовый результат на подтверждение. Вместо 20 минут на документ — 2 минуты на проверку.
+              На выходе бухгалтер получает <b>готовый результат для учёта</b>: заполненный документ, предложенные проводки и поля, где нужна проверка.
             </p>
             <div class="list">
               <div class="li"><span class="bullet" style="background:rgba(22,163,74,.45)"></span><span>Готовый результат на подтверждение</span></div>
@@ -554,6 +614,41 @@
               <div class="li"><span class="bullet" style="background:rgba(22,163,74,.45)"></span><span>Масштабирование без роста штата</span></div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Блок — Что вы получаете на выходе -->
+    <section class="section">
+      <div class="wrap">
+        <div class="head">
+          <h2>Что вы получаете на выходе</h2>
+        </div>
+        <div class="steps" role="list" aria-label="Результаты" style="grid-template-columns: repeat(4, 1fr)">
+          <article class="step" role="listitem">
+            <div class="n">
+              <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M7 3h10a3 3 0 0 1 3 3v13a2 2 0 0 1-2 2H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Документ, готовый к проведению в 1С</h3>
+          </article>
+          <article class="step" role="listitem">
+            <div class="n">
+              <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M4 7h16M6 11h12M8 15h8M10 19h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Проводки (черновик) + привязки (контрагент/договор)</h3>
+          </article>
+          <article class="step" role="listitem">
+            <div class="n">
+              <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Аналитика/разнесение (если используется в учёте)</h3>
+          </article>
+          <article class="step" role="listitem">
+            <div class="n">
+              <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M12 9v4M12 17h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <h3>Метки, где нужна проверка бухгалтером</h3>
+          </article>
         </div>
       </div>
     </section>
@@ -578,13 +673,13 @@
           <article class="step" role="listitem">
             <div class="n">2</div>
             <h3>Умная автоматизация распознаёт и извлекает данные</h3>
-            <p>Тип документа, реквизиты, номенклатура, суммы, НДС. Работает с любым качеством — мятые сканы, фото с телефона, нечёткие печати.</p>
+            <p>Тип документа, реквизиты, номенклатура, суммы, НДС. Работает с любым качеством — мятые сканы, фото с телефона, нечёткие печати. Извлекаем данные в формате, пригодном для учёта: реквизиты, табличная часть, суммы/НДС — с отметками уверенности.</p>
           </article>
 
           <article class="step" role="listitem">
             <div class="n">3</div>
             <h3>Умная автоматизация готовит проводки</h3>
-            <p>Формирует бухгалтерские записи с привязкой к контактрагенту и договору. Учитывает специфику вашего учёта.</p>
+            <p>Формируем проводки и при необходимости <b>подсказываем аналитику</b> (статья/ЦФО/проект/подразделение) по правилам и вашим прошлым решениям.</p>
           </article>
 
           <article class="step" role="listitem">
@@ -610,19 +705,19 @@
           <article class="step" role="listitem">
             <div class="n">1</div>
             <h3>Бухгалтерский аутсорсинг</h3>
-            <p>Ведём десятки компаний, большой поток первички. Сервис помогает обрабатывать документы без расширения штата и держать единый стандарт качества.</p>
+            <p>Ведём десятки компаний, большой поток первички. Сервис помогает обрабатывать документы без расширения штата и держать единый стандарт качества. Снимаем ручной ввод и стандартизируем разнесение расходов — меньше ошибок на потоке.</p>
           </article>
 
           <article class="step" role="listitem">
             <div class="n">2</div>
             <h3>Собственная бухгалтерия с большим объёмом документов</h3>
-            <p>Опт/дистрибуция/производство/логистика — много УПД, накладных, актов и НДС. Сервис сокращает ручной ввод и ускоряет закрытие месяца.</p>
+            <p>Опт/дистрибуция/производство/логистика — много УПД, накладных, актов и НДС. Сервис сокращает ручной ввод и ускоряет закрытие месяца. Ускоряем закрытие месяца: первичка быстрее попадает в учёт, меньше ручных правок.</p>
           </article>
 
           <article class="step" role="listitem">
             <div class="n">3</div>
             <h3>Холдинг / группа компаний (ОЦО)</h3>
-            <p>Нужны контроль, единые правила и предсказуемое качество. Сервис помогает стандартизировать первичку и снизить риск ошибок при масштабе.</p>
+            <p>Нужны контроль, единые правила и предсказуемое качество. Сервис помогает стандартизировать первичку и снизить риск ошибок при масштабе. Единые правила разнесения и контроль качества на масштабе.</p>
           </article>
 
         </div>
@@ -635,14 +730,15 @@
         <div class="card cta">
           <div class="cta-left">
             <h2>Попробуйте на ваших документах — бесплатно</h2>
-            <p>Пришлите нам реальные документы — покажем результат. Без интеграции, без внедрения, без обязательств.</p>
+            <p>Пришлите 2–3 документа — покажем <b>готовый результат для учёта</b>: заполненный документ, проводки и где требуется проверка. Без интеграции, без внедрения, без обязательств.</p>
+            <p style="margin-top:8px; font-size:14px; color:var(--muted2)">Лучше всего подходят: сканы/фото/PDF, разные поставщики, документы «как прислали».</p>
 
             <div class="contacts" aria-label="Контакты">
               <div><b style="color:var(--text)">Контакты</b></div>
               <div style="margin-top:8px">
                 Email: <a href="mailto:support@buhtab.ru">support@buhtab.ru</a>
               </div>
-              <div class="hint">Отвечаем быстро. Можно прислать 2–3 документа для демо.</div>
+              <div class="hint">Отвечаем быстро.</div>
             </div>
           </div>
 
@@ -664,6 +760,27 @@
             <div class="hint" id="formHint" aria-live="polite"></div>
           </form>
         </div>
+
+        <!-- FAQ -->
+        <section class="section" style="padding-bottom:0">
+          <div class="head">
+            <h2>Частые вопросы</h2>
+          </div>
+          <div class="faq">
+            <div class="faq-item">
+              <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Это заменяет наши текущие сервисы?</div>
+              <div class="faq-a">Buhtab автоматизирует ввод первички в учёт и подготовку учётного результата. Контроль остаётся у бухгалтера.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Вы работаете только с «типовыми сканами»?</div>
+              <div class="faq-a">Работаем со сканами/фото/PDF разного качества и форматов. Чем больше вы подтверждаете/правите — тем точнее становится результат.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Где именно экономия времени?</div>
+              <div class="faq-a">Снимаем ручной ввод и большую часть подготовки проводок/полей. Остаётся проверка и редкие исключения.</div>
+            </div>
+          </div>
+        </section>
 
         <div class="footer">
           © <span id="year"></span> Buhtab. Все права защищены.
